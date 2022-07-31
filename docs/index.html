@@ -10,11 +10,11 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js"></script>
 	<meta http-equiv="content-security-policy" content="">
-	<link rel="stylesheet" href="/app/immutable/assets/index-2de79fc8.css">
-	<link rel="modulepreload" href="/app/immutable/start-bb8cfc74.js">
-	<link rel="modulepreload" href="/app/immutable/chunks/index-adacd659.js">
-	<link rel="modulepreload" href="/app/immutable/layout.svelte-e3ef3d79.js">
-	<link rel="modulepreload" href="/app/immutable/pages/index.svelte-1f98a4be.js">
+	<link rel="stylesheet" href="/website-checker/app/immutable/assets/index-2de79fc8.css">
+	<link rel="modulepreload" href="/website-checker/app/immutable/start-e580cfc6.js">
+	<link rel="modulepreload" href="/website-checker/app/immutable/chunks/index-adacd659.js">
+	<link rel="modulepreload" href="/website-checker/app/immutable/layout.svelte-e3ef3d79.js">
+	<link rel="modulepreload" href="/website-checker/app/immutable/pages/index.svelte-1f98a4be.js">
 </head>
 
 <body>
@@ -78,13 +78,13 @@
 
 
 		<script type="module" data-sveltekit-hydrate="boe5gb">
-		import { set_public_env, start } from "/app/immutable/start-bb8cfc74.js";
+		import { set_public_env, start } from "/website-checker/app/immutable/start-e580cfc6.js";
 
 		set_public_env({});
 
 		start({
 			target: document.querySelector('[data-sveltekit-hydrate="boe5gb"]').parentNode,
-			paths: {"base":"","assets":""},
+			paths: {"base":"/website-checker","assets":"/website-checker"},
 			session: {},
 			route: true,
 			spa: false,

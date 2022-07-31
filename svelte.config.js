@@ -1,4 +1,3 @@
-// import adapter from '@sveltejs/adapter-auto';
 import adapterStatic from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -13,7 +12,11 @@ const config = {
 		}),
 		prerender: {
 			default: true
-		}
+		},
+		paths: {
+			// YOUR github repository name
+			base: "/website-checker",
+		},
 	}
 };
 
