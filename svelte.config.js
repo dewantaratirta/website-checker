@@ -4,6 +4,7 @@ import adapterStatic from '@sveltejs/adapter-static';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
+		appDir: 'app',
 		adapter: adapterStatic({
 			pages: 'docs',
 			assets: 'docs',
