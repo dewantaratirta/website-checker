@@ -1,26 +1,30 @@
 <script>
 	import { query } from 'dns-query';
 	import { onMount } from 'svelte';
-	export let url;
-	export let name;
-	export let icon = '';
+	let url;
+	let name;
+	let icon = '';
+	export var hostData = {};
 
-	let dns = '1.0.0.1';
-	let ip = '';
+	// let dns = '1.0.0.1';
+	// let ip = '';
+
 	// state = empty|loading|true|false;
 	let nameserverResolveState = 'empty';
 	let domainPingState = 'empty';
-	export let iconOverride = '';
-	var pingResult;
+	var pingResult = 0;
 	var p = [];
 	var stateResultClass;
 	var id = '';
 
 	onMount(() => {
 		id = makeid();
+		// config ping
 		let conf = {};
-		if (iconOverride != '') {
-			conf.favicon = iconOverride;
+		console.log(hostData);
+		if (hostData.overrideIcon != '') {
+			console.log('do this');
+			conf.favicon = hostData.overrideIcon;
 		}
 
 		p[id] = new Ping(conf);
@@ -83,7 +87,7 @@
 		checkResultClass();
 
 		const startTime = new Date().getTime();
-		p[id].ping('https://' + url, function (err, data) {
+		p[id].ping('https://' + hostData.host, function (err, data) {
 			domainPingState = 'loading';
 			// Also display error if err is returned.
 			const resultTime = new Date().getTime();
@@ -107,6 +111,25 @@
 	h4 {
 		text-transform: uppercase;
 	}
+
+	a.cardlink {
+		margin: var(--block-spacing-vertical) 0;
+	}
+	a.cardlink ul {
+		color: var(--secondary-inverse) !important;
+	}
+	a.cardlink header {
+		color: var(--h4-color) !important;
+	}
+	a.cardlink:hover,
+	a.cardlink:focus {
+		text-decoration: none !important;
+		background-color: var(--background-color) !important;
+		color: var(--color) !important;
+	}
+	a.cardlink article {
+		margin: 0px !important;
+	}
 	article.fail,
 	article.fail > header {
 		background: rgb(233 58 58 / 56%);
@@ -123,16 +146,17 @@
 	}
 </style>
 
-<article class={stateResultClass}>
-	<header>
-		{#if icon != ''}
-			<i class={icon} />
-		{/if}
-		{name}
-	</header>
-	<body>
-		<ul>
-			<!-- {#if nameserverResolveState != 'empty'}
+<a href="http://{hostData.mainUrl}" target="__blank" class="cardlink">
+	<article class={stateResultClass}>
+		<header>
+			{#if hostData.icon != ''}
+				<i class={hostData.icon} />
+			{/if}
+			{hostData.name}
+		</header>
+		<body>
+			<ul>
+				<!-- {#if nameserverResolveState != 'empty'}
 				{#if nameserverResolveState == 'loading'}
 					<li>Loading ...</li>
 				{/if}
@@ -146,19 +170,20 @@
 				<li>Nameserver Check</li>
 			{/if} -->
 
-			{#if domainPingState != 'empty'}
-				{#if domainPingState == 'loading'}
-					<li>Pinging Server</li>
+				{#if domainPingState != 'empty'}
+					{#if domainPingState == 'loading'}
+						<li>Pinging Server</li>
+					{/if}
+					{#if domainPingState == true}
+						<li>Ping Success</li>
+					{/if}
+					{#if domainPingState == false}
+						<li>Ping Failed</li>
+					{/if}
+				{:else}
+					<li>Check Ping</li>
 				{/if}
-				{#if domainPingState}
-					<li>Ping Success</li>
-				{/if}
-				{#if domainPingState == false}
-					<li>Ping Failed</li>
-				{/if}
-			{:else}
-				<li>Check Ping</li>
-			{/if}
-		</ul>
-	</body>
-</article>
+			</ul>
+		</body>
+	</article>
+</a>

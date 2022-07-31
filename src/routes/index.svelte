@@ -3,37 +3,83 @@
 	import DnsList from '$lib/DnsList.svelte';
 
 	var hosts = [
-		{ name: 'Dota2', host: 'dota2.com', icon: '', overrideIcon: '' },
-		{ name: 'Counter Strike', host: 'counter-strike.net', icon: '', overrideIcon: '' },
-		{ name: 'Origin', host: 'origin.com', icon: '', overrideIcon: '' },
-		{ name: 'Google', host: 'google.com', icon: 'fab fa-google fa-fw', overrideIcon: '' },
-		{ name: 'Steam', host: 'steamcommunity.com', icon: 'fab fa-steam fa-fw', overrideIcon: '' },
-		{ name: 'Paypal', host: 'paypal.com', icon: 'fab fa-paypal fa-fw', overrideIcon: '' },
-		{ name: 'Twitch', host: 'twitch.tv', icon: 'fab fa-twitch fa-fw', overrideIcon: '' },
-		{ name: 'Telegram', host: 'telegram.org', icon: 'fa-brands fa-telegram', overrideIcon: '' },
+		{ name: 'Dota2', host: 'dota2.com', icon: '', overrideIcon: '', mainUrl: 'dota2.com' },
+		{
+			name: 'Counter Strike',
+			host: 'counter-strike.net',
+			icon: '',
+			overrideIcon: '',
+			mainUrl: 'counter-strike.net'
+		},
+		{
+			name: 'Origin',
+			host: 'origin.com',
+			icon: '',
+			overrideIcon: '',
+			mainUrl: 'origin.com'
+		},
+		{
+			name: 'Google',
+			host: 'google.com',
+			icon: 'fab fa-google fa-fw',
+			overrideIcon: '',
+			mainUrl: 'counter-strike.net'
+		},
+		{
+			name: 'Steam',
+			host: 'steamcommunity.com',
+			icon: 'fab fa-steam fa-fw',
+			overrideIcon: '',
+			mainUrl: 'steamcommunity.com'
+		},
+		{
+			name: 'Paypal',
+			host: 'paypal.com',
+			icon: 'fab fa-paypal fa-fw',
+			overrideIcon: '',
+			mainUrl: 'paypal.com'
+		},
+		{
+			name: 'Twitch',
+			host: 'twitch.tv',
+			icon: 'fab fa-twitch fa-fw',
+			overrideIcon: '',
+			mainUrl: 'twitch.tv'
+		},
+		{
+			name: 'Telegram',
+			host: 'telegram.org',
+			icon: 'fa-brands fa-telegram',
+			overrideIcon: '',
+			mainUrl: 'telegram.org'
+		},
 		{
 			name: 'Epic Games',
-			host: 'store.epicgames.com',
+			host: 'static-assets-prod.epicgames.com',
 			icon: '',
-			overrideIcon: '/static/favicon.ico'
+			overrideIcon: '/epic-store/static/favicon.ico',
+			mainUrl: 'epicgames.com'
 		},
 		{
 			name: 'SoundCloud',
 			host: 'soundcloud.com',
 			icon: 'fa-brands fa-soundcloud',
-			overrideIcon: ''
+			overrideIcon: '',
+			mainUrl: 'soundcloud.com'
 		},
 		{
 			name: 'Nintendo',
 			host: 'assets.nintendo.com',
 			icon: 'fa-solid fa-game-console-handheld',
-			overrideIcon: '/image/upload/ncom/icons/fav-icons/favicon.ico'
+			overrideIcon: '/image/upload/ncom/icons/fav-icons/favicon.ico',
+			mainUrl: 'nintendo.com'
 		},
 		{
 			name: 'Reddit',
 			host: 'reddit.com',
 			icon: 'fa-brands fa-reddit',
-			overrideIcon: ''
+			overrideIcon: '',
+			mainUrl: 'reddit.com'
 		}
 	];
 
@@ -80,12 +126,7 @@
 
 		<div class="grid">
 			{#each hosts as host, i}
-				<CheckHost
-					url={host.host}
-					name={host.name}
-					icon={host.icon}
-					iconOverride={host.overrideIcon}
-					bind:this={hostComponent[i]} />
+				<CheckHost hostData={host} bind:this={hostComponent[i]} />
 			{/each}
 		</div>
 	</main>
