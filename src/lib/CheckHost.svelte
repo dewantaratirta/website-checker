@@ -116,7 +116,7 @@
 		margin: var(--block-spacing-vertical) 0;
 	}
 	a.cardlink ul {
-		color: var(--secondary-inverse) !important;
+		color: var(--h2-color) !important;
 	}
 	a.cardlink header {
 		color: var(--h4-color) !important;

@@ -131,3 +131,9 @@
 		</div>
 	</main>
 </body>
+
+<svelte:head>
+	<title>Simple Server Checker</title>
+	<meta name="description" content="Cek koneksi server keblokir kominfod" />
+	<html lang="id" />
+</svelte:head>
