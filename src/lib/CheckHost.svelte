@@ -21,7 +21,6 @@
 		id = makeid();
 		// config ping
 		let conf = {};
-		console.log(hostData);
 		if (hostData.overrideIcon != '') {
 			console.log('do this');
 			conf.favicon = hostData.overrideIcon;
@@ -73,7 +72,15 @@
 		return (stateResultClass = res);
 	};
 
+	const reset = () => {
+		stateResultClass = '';
+		domainPingState = 'empty';
+		setTimeout(() => {}, 300);
+	};
+
 	export const doCheck = async (data) => {
+		reset();
+		stateResultClass = '';
 		// NS Resolve
 		// try {
 		// 	nameserverResolveState = 'loading';
@@ -84,7 +91,7 @@
 		// } catch (err) {
 		// 	nameserverResolveState = false;
 		// }
-		checkResultClass();
+		// checkResultClass();
 
 		const startTime = new Date().getTime();
 		p[id].ping('https://' + hostData.host, function (err, data) {

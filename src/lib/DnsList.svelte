@@ -1,5 +1,6 @@
 <script>
 	import { onMount, createEventDispatcher } from 'svelte/internal';
+	export let text = 'Go!';
 
 	const dns = [
 		{ name: 'tk', ip: 'nsjkt1.telkom.net.id' },
@@ -19,5 +20,5 @@
 
 <div>
 	<div class="grid" />
-	<button on:click={clickHandler}>Go!</button>
+	<button on:click={clickHandler}>{text}</button>
 </div>
